@@ -9,19 +9,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-@Path("/Ticket")
-public class ticketTest {
+@Path("/Poste")
+public class poste_informatiqueTest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson() throws IOException {
-        String filePath = "src/main/resources/ticket.json";
+        String filePath = "src/main/resources/poste_informatique.json";
         return Files.readString(Paths.get(filePath));
     }
 }
-
-
-
-
-
-
-
