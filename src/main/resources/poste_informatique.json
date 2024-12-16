@@ -1,0 +1,34 @@
+{
+  "poste_informatique": [
+    {
+      "id": 1,
+      "utilisateur_affecte": "U123",
+      "etat": "en fonction",
+      "configuration": "Processeur: Intel i5, RAM: 8GB, Stockage: 256GB SSD"
+    },
+    {
+      "id": 2,
+      "utilisateur_affecte": "U124",
+      "etat": "en maintenance",
+      "configuration": "Processeur: Intel i7, RAM: 16GB, Stockage: 512GB SSD"
+    },
+    {
+      "id": 3,
+      "utilisateur_affecte": "U125",
+      "etat": "en commande",
+      "configuration": "Processeur: AMD Ryzen 5, RAM: 8GB, Stockage: 1TB HDD"
+    },
+    {
+      "id": 4,
+      "utilisateur_affecte": "U126",
+      "etat": "en fonction",
+      "configuration": "Processeur: Intel i3, RAM: 4GB, Stockage: 128GB SSD"
+    },
+    {
+      "id": 5,
+      "utilisateur_affecte": "U127",
+      "etat": "en fonction",
+      "configuration": "Processeur: AMD Ryzen 7, RAM: 32GB, Stockage: 1TB SSD"
+    }
+  ]
+}

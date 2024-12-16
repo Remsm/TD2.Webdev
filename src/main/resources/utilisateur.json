@@ -1,0 +1,49 @@
+{
+  "utilisateur": [
+    {
+      "id": 1,
+      "nom": "John Doe",
+      "email": "john.doe@example.com",
+      "mot_de_passe": "$2y$10$wTt9e8kYv6u5.1D5t8pEfO9WzELqYXU8uo5G5as2.u0TL1WmVGlaG",
+      "date_derniere_connexion": "11/05/2024 10:15:30",
+      "statut": "actif",
+      "role": "utilisateur"
+    },
+    {
+      "id": 2,
+      "nom": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "mot_de_passe": "$2y$10$HhJ3VuFz2SdX6v9DlR9Q9O4N4IwYo2eSz1G6S5Tt7.kbX2yR3lgO2",
+      "date_derniere_connexion": "10/05/2024 18:45:00",
+      "statut": "non actif",
+      "role": "utilisateur"
+    },
+    {
+      "id": 3,
+      "nom": "Alice Brown",
+      "email": "alice.brown@example.com",
+      "mot_de_passe": "$2y$10$Yk3Xv5Yd8NwR2K4Rk0dF7G5Ox0TlG7Yo2Wp3V8Yb1LoRf2KmGq1G2",
+      "date_derniere_connexion": "15/05/2024 09:00:00",
+      "statut": "actif",
+      "role": "intervenant"
+    },
+    {
+      "id": 4,
+      "nom": "Bob Johnson",
+      "email": "bob.johnson@example.com",
+      "mot_de_passe": "$2y$10$Wk9N4Tt8Rf1G5K6LpY2R7F8HjQ6VuO3Gq1Yo2Yw8R9Z6X3Nk3G5O2",
+      "date_derniere_connexion": "01/06/2024 13:30:00",
+      "statut": "non actif",
+      "role": "intervenant"
+    },
+    {
+      "id": 5,
+      "nom": "Charlie White",
+      "email": "charlie.white@example.com",
+      "mot_de_passe": "$2y$10$Lm3Q9VuN2R5Y4G7Tt6Fp3X5Wk8O4Y2G9X6TlG7Yo2W1K5R9Nw9G2",
+      "date_derniere_connexion": "20/05/2024 07:45:00",
+      "statut": "actif",
+      "role": "utilisateur"
+    }
+  ]
+}
