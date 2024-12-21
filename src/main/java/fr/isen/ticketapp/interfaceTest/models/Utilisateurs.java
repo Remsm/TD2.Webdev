@@ -1,4 +1,4 @@
-package fr.isen.ticketapp.interfaces.models;
+package fr.isen.ticketapp.models;
 
 import java.util.Date;
 import fr.isen.ticketapp.interfaces.models.enums.ACTIF;

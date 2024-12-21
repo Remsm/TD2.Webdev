@@ -1,4 +1,4 @@
-package fr.isen.ticketapp.interfaces.models;
+package fr.isen.ticketapp.models;
 
 import fr.isen.ticketapp.interfaces.models.enums.ETAT2;
 

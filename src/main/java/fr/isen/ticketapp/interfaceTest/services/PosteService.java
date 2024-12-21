@@ -1,6 +1,6 @@
-package fr.isen.ticketapp.interfaces.services;
+package fr.isen.ticketapp.services;
 
-import fr.isen.ticketapp.interfaces.models.Poste;
+import fr.isen.ticketapp.models.Poste;
 
 public interface PosteService {
     void createPoste(final Poste poste);

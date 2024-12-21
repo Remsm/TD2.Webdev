@@ -1,6 +1,6 @@
-package fr.isen.ticketapp.interfaces.services;
+package fr.isen.ticketapp.services;
 
-import fr.isen.ticketapp.interfaces.models.Utilisateurs;
+import fr.isen.ticketapp.models.Utilisateurs;
 
 public interface UtilisateurService {
     void createUser(final Utilisateurs user);

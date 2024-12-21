@@ -1,64 +1,62 @@
-{
-  "ticket": [
+ [
     {
       "id": 1,
       "titre": "Problème ordinateur",
       "description": "Windows ne répond pas.",
       "date_creation": "11/06/2024 08:00:00",
       "date_modifiication": "25/07/2024 09:00:00",
-      "impact": "Majeur",
-      "etat": "en cours",
+      "impact": "MAJEUR",
+      "etat": "EN_COURS",
       "utilisateur_createur": "U123",
       "poste_informatique": 1,
       "type_demande": "Problème technique"
     },
-    {
-      "id": 2,
-      "titre": "Imprimante hors service",
-      "description": "L'imprimante ne fonctionne plus depuis ce matin.",
-      "date_creation": "15/06/2024 10:30:00",
-      "date_modifiication": "15/06/2024 14:00:00",
-      "impact": "Bloquant",
-      "etat": "ouvert",
-      "utilisateur_createur": "U124",
-      "poste_informatique": 2,
-      "type_demande": "Problème matériel"
-    },
-    {
-      "id": 3,
-      "titre": "Problème réseau",
-      "description": "Impossible de se connecter à Internet.",
-      "date_creation": "20/06/2024 09:00:00",
-      "date_modifiication": "22/06/2024 11:00:00",
-      "impact": "Majeur",
-      "etat": "résolu",
-      "utilisateur_createur": "U125",
-      "poste_informatique": 3,
-      "type_demande": "Problème technique"
-    },
-    {
-      "id": 4,
-      "titre": "Demande de mise à jour logiciel",
-      "description": "Besoin d'une mise à jour vers la dernière version d'Office.",
-      "date_creation": "25/06/2024 14:00:00",
-      "date_modifiication": "25/06/2024 15:30:00",
-      "impact": "Mineur",
-      "etat": "fermé",
-      "utilisateur_createur": "U126",
-      "poste_informatique": 4,
-      "type_demande": "Demande de mise à jour"
-    },
-    {
-      "id": 5,
-      "titre": "Problème d'écran",
-      "description": "L'écran du poste affiche des lignes verticales colorées.",
-      "date_creation": "01/07/2024 08:15:00",
-      "date_mise_a_jour": "02/07/2024 12:00:00",
-      "impact": "Mineur",
-      "etat": "annulé",
-      "utilisateur_createur": "U127",
-      "poste_informatique": 5,
-      "type_demande": "Problème matériel"
-    }
-  ]
-}
+   {
+     "id": 2,
+     "titre": "Imprimante hors service",
+     "description": "L'imprimante ne fonctionne plus depuis ce matin.",
+     "date_creation": "15/06/2024 10:30:00",
+     "date_modifiication": "15/06/2024 14:00:00",
+     "impact": "BLOQUANT",
+     "etat": "OUVERT",
+     "utilisateur_createur": "U124",
+     "poste_informatique": 2,
+     "type_demande": "Problème matériel"
+   },
+   {
+     "id": 3,
+     "titre": "Problème réseau",
+     "description": "Impossible de se connecter à Internet.",
+     "date_creation": "20/06/2024 09:00:00",
+     "date_modifiication": "22/06/2024 11:00:00",
+     "impact": "MAJEUR",
+     "etat": "RESOLU",
+     "utilisateur_createur": "U125",
+     "poste_informatique": 3,
+     "type_demande": "Problème technique"
+   },
+   {
+     "id": 4,
+     "titre": "Demande de mise à jour logiciel",
+     "description": "Besoin d'une mise à jour vers la dernière version d'Office.",
+     "date_creation": "25/06/2024 14:00:00",
+     "date_modifiication": "25/06/2024 15:30:00",
+     "impact": "MINEUR",
+     "etat": "FERME",
+     "utilisateur_createur": "U126",
+     "poste_informatique": 4,
+     "type_demande": "Demande de mise à jour"
+   },
+   {
+     "id": 5,
+     "titre": "Problème d'écran",
+     "description": "L'écran du poste affiche des lignes verticales colorées.",
+     "date_creation": "01/07/2024 08:15:00",
+     "date_modifiication": "02/07/2024 12:00:00",
+     "impact": "MINEUR",
+     "etat": "ANNULE",
+     "utilisateur_createur": "U127",
+     "poste_informatique": 5,
+     "type_demande": "Problème matériel"
+   }
+ ]

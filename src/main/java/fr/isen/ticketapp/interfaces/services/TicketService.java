@@ -1,16 +1,13 @@
 package fr.isen.ticketapp.interfaces.services;
 
-import fr.isen.ticketapp.interfaces.models.Ticket;
+import fr.isen.ticketapp.interfaces.models.TicketModel;
+
+import java.util.List;
 
 public interface TicketService {
-    void createTicket(final Ticket ticket);
 
-    void getAllTickets();
+    List<TicketModel> getTickets();
+    TicketModel getTicketById(final int id);
 
-    void getTicket();
-
-    void updateTicket(final int id, final Ticket ticket);
-
-    void deleteTicket(final int id);
-
+    void removeTicket(final int id);
 }
