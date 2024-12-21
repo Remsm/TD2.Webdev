@@ -2,6 +2,7 @@ package fr.isen.ticketapp.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.isen.ticketapp.interfaces.models.TicketModel;
+import fr.isen.ticketapp.interfaces.models.enums.IMPACT;
 import fr.isen.ticketapp.interfaces.services.TicketService;
 
 import java.io.File;
@@ -20,8 +21,11 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public TicketModel getTicketById(int id) {
-        // Implémentez cette méthode pour récupérer un ticket par son ID
-        return null;
+        List<TicketModel> tickets = getTickets();
+        return tickets.stream()
+                .filter(ticket -> ticket.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
