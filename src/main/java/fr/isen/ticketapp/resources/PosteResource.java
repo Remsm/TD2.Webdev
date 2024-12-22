@@ -1,4 +1,4 @@
-package fr.isen.ticketapp;
+package fr.isen.ticketapp.resources;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @Path("/Poste")
-public class poste_informatiqueTest {
+public class PosteResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson() throws IOException {

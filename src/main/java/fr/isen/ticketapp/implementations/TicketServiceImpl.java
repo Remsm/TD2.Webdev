@@ -1,4 +1,4 @@
-package fr.isen.ticketapp.implementation;
+package fr.isen.ticketapp.implementations;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.isen.ticketapp.interfaces.models.TicketModel;

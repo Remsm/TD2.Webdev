@@ -1,9 +1,9 @@
-package fr.isen.ticketapp.models;
+package fr.isen.ticketapp.interfaces.models;
 
 import java.util.Date;
 import fr.isen.ticketapp.interfaces.models.enums.ACTIF;
 
-public class Utilisateurs {
+public class UtilisateurModel {
     private int id;
 
     private String nom;

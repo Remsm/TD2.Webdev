@@ -1,6 +1,6 @@
-package fr.isen.ticketapp;
+package fr.isen.ticketapp.resources;
 
-import fr.isen.ticketapp.implementation.TicketServiceImpl;
+import fr.isen.ticketapp.implementations.TicketServiceImpl;
 import fr.isen.ticketapp.interfaces.models.TicketModel;
 import fr.isen.ticketapp.interfaces.services.TicketService;
 import jakarta.ws.rs.*;
