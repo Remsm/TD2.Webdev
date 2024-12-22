@@ -114,23 +114,63 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     @Override
-    public void createUser(UtilisateurModel user) {
+    public UtilisateurModel modifyUtilisateur(UtilisateurModel utilisateurModel) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = dataSource.getConnection();
+
+            String sql = "UPDATE utilisateur SET nom = ?, email = ?, mot_de_passe = ?, derniere_connexion = ?, statut = ?, role = ? WHERE id = ?";
+            stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, utilisateurModel.getNom());
+            stmt.setString(2, utilisateurModel.getEmail());
+            stmt.setString(3, utilisateurModel.getMot_de_passe());
+            stmt.setString(4, utilisateurModel.getDerniere_connexion());
+            stmt.setString(5, utilisateurModel.getStatut().toString());
+            stmt.setString(6, utilisateurModel.getRole());
+            stmt.setInt(7, utilisateurModel.getId());
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected == 0) {
+                throw new RuntimeException("Utilisateur avec l'ID " + utilisateurModel.getId() + " introuvable.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la modification de l'utilisateur avec l'ID " + utilisateurModel.getId(), e);
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException("Erreur lors de la fermeture des ressources", e);
+            }
+        }
+
+        return utilisateurModel;
 
     }
 
     @Override
-    public void updateUser(int id, UtilisateurModel user) {
+    public void deleteUtilisateur(int id) {
+        Connection conn = null;
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM utilisateur WHERE id = ?");
+            stmt.setInt(1, id);
 
-    }
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new RuntimeException("Utilisateur avec l'ID " + id + " introuvable.");
+            }
 
-    @Override
-    public void deleteUser(int id) {
+            stmt.close();
+            conn.close();
 
-    }
-
-    @Override
-    public void getUser() {
-
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la suppression de l'utilisateur avec l'ID " + id, e);
+        }
     }
 
     // Méthode générique pour charger le fichier JSON et le convertir en liste d'objets

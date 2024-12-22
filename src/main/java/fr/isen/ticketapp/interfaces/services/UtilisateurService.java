@@ -14,12 +14,9 @@ public interface UtilisateurService {
 
     UtilisateurModel addUtilisateur(final UtilisateurModel utilisateurModel);
 
-    void createUser(final UtilisateurModel user);
+    UtilisateurModel modifyUtilisateur(final UtilisateurModel utilisateurModel);
 
-    void updateUser(final int id, final UtilisateurModel user);
+    void deleteUtilisateur(int id);
 
-    void deleteUser(final int id);
-
-    void getUser();
 
 }

@@ -3,10 +3,7 @@ package fr.isen.ticketapp.resources;
 import fr.isen.ticketapp.implementations.UtilisateurServiceImpl;
 import fr.isen.ticketapp.interfaces.models.UtilisateurModel;
 import fr.isen.ticketapp.interfaces.services.UtilisateurService;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.ArrayList;
@@ -40,5 +37,16 @@ public class UtilisateurResource {
     @POST
     public UtilisateurModel addUtilisateur(UtilisateurModel utilisateurModel) {
         return this.utilisateurService.addUtilisateur(utilisateurModel);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void deleteUtilisateur(@jakarta.ws.rs.PathParam("id") int id) {
+        this.utilisateurService.deleteUtilisateur(id);
+    }
+
+    @PUT
+    public UtilisateurModel modifyUtilisateur(UtilisateurModel utilisateurModel) {
+        return this.utilisateurService.modifyUtilisateur(utilisateurModel);
     }
 }
