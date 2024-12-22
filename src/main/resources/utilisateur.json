@@ -14,7 +14,7 @@
       "email": "jane.smith@example.com",
       "mot_de_passe": "$2y$10$HhJ3VuFz2SdX6v9DlR9Q9O4N4IwYo2eSz1G6S5Tt7.kbX2yR3lgO2",
       "derniere_connexion": "10/05/2024 18:45:00",
-      "statut": "nonActif",
+      "statut": "inactif",
       "role": "utilisateur"
     },
     {
@@ -32,7 +32,7 @@
       "email": "bob.johnson@example.com",
       "mot_de_passe": "$2y$10$Wk9N4Tt8Rf1G5K6LpY2R7F8HjQ6VuO3Gq1Yo2Yw8R9Z6X3Nk3G5O2",
       "derniere_connexion": "01/06/2024 13:30:00",
-      "statut": "nonActif",
+      "statut": "inactif",
       "role": "intervenant"
     },
     {

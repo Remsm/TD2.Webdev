@@ -24,9 +24,17 @@ public class UtilisateurResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<UtilisateurModel> getAllTickets() {
-        List<UtilisateurModel> utilisateurs = this.utilisateurService.getJSONUtilisateurs();
-
+        List<UtilisateurModel> utilisateurs = new ArrayList<>(this.utilisateurService.getJSONUtilisateurs());
+        List<UtilisateurModel> utilisateursFromDB = new ArrayList<>(this.utilisateurService.getUtilisateurs());
+        utilisateurs.addAll(utilisateursFromDB);
         return utilisateurs;
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public UtilisateurModel getUtilisateurtById(@jakarta.ws.rs.PathParam("id") int id) {
+        return this.utilisateurService.getUtilisateurtById(id);
     }
 
     @POST

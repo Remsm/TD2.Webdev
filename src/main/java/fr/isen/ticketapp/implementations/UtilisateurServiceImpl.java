@@ -2,6 +2,7 @@ package fr.isen.ticketapp.implementations;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.isen.ticketapp.interfaces.models.UtilisateurModel;
+import fr.isen.ticketapp.interfaces.models.enums.ACTIF;
 import fr.isen.ticketapp.interfaces.services.UtilisateurService;
 import io.agroal.api.AgroalDataSource;
 import jakarta.enterprise.inject.spi.CDI;
@@ -20,6 +21,57 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public List<UtilisateurModel> getJSONUtilisateurs() {
         return getUtilisateurFromJsonFile(UtilisateurModel[].class, "utilisateur.json");
+    }
+
+    @Override
+    public List<UtilisateurModel> getUtilisateurs() {
+        List<UtilisateurModel> utilisateurs = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = dataSource.getConnection();
+            String sql = "SELECT * FROM utilisateur";
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                UtilisateurModel utilisateur = new UtilisateurModel();
+                utilisateur.setId(rs.getInt("id"));
+                utilisateur.setNom(rs.getString("nom"));
+                utilisateur.setEmail(rs.getString("email"));
+                utilisateur.setMot_de_passe(rs.getString("mot_de_passe"));
+                utilisateur.setDerniere_connexion(rs.getString("derniere_connexion"));
+                utilisateur.setStatut(ACTIF.valueOf(rs.getString("statut")));
+                utilisateur.setRole(rs.getString("role"));
+
+                utilisateurs.add(utilisateur);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la récupération des utilisateurs", e);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException("Erreur lors de la fermeture des ressources", e);
+            }
+        }
+
+        return utilisateurs;
+    }
+
+    @Override
+    public UtilisateurModel getUtilisateurtById(int id) {
+        List<UtilisateurModel> utilisateurs = new ArrayList<>(this.getJSONUtilisateurs());
+        List<UtilisateurModel> utilisateursFromDB = new ArrayList<>(this.getUtilisateurs());
+        utilisateurs.addAll(utilisateursFromDB);
+        return utilisateurs.stream()
+                .filter(utilisateur -> utilisateur.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

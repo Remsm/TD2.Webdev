@@ -8,6 +8,10 @@ public interface UtilisateurService {
 
     List<UtilisateurModel> getJSONUtilisateurs();
 
+    List<UtilisateurModel> getUtilisateurs();
+
+    UtilisateurModel getUtilisateurtById(final int id);
+
     UtilisateurModel addUtilisateur(final UtilisateurModel utilisateurModel);
 
     void createUser(final UtilisateurModel user);
