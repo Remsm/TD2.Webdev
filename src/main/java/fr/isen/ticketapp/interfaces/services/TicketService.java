@@ -12,6 +12,7 @@ public interface TicketService {
 
     TicketModel addTicket(final TicketModel ticketModel);
 
+    TicketModel modifyTicket(final TicketModel ticketModel);
 
     void deleteTicket(int id);
 }

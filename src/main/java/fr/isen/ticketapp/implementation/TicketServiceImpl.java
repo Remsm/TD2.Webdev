@@ -98,6 +98,47 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    @Override
+    public TicketModel modifyTicket(TicketModel ticketModel) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = dataSource.getConnection();
+
+            String sql = "UPDATE ticket SET titre = ?, description = ?, impact = ?, date_modification = ?, etat = ?, utilisateur_createur = ?, poste_informatique = ?, type_demande = ? WHERE id = ?";
+            stmt = conn.prepareStatement(sql);
+
+            // Paramètres de la requête SQL
+            stmt.setString(1, ticketModel.getTitre());  // titre
+            stmt.setString(2, ticketModel.getDescription());  // description
+            stmt.setString(3, ticketModel.getImpact().toString());  // impact
+            stmt.setTimestamp(4, ticketModel.getDate_modification() != null ?
+                    new Timestamp(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(ticketModel.getDate_modification()).getTime()) : null);  // date_modification
+            stmt.setString(5, ticketModel.getEtat().toString());  // etat
+            stmt.setString(6, ticketModel.getUtilisateur_createur());  // utilisateur_createur
+            stmt.setInt(7, ticketModel.getPoste_informatique());  // poste_informatique
+            stmt.setString(8, ticketModel.getType_demande());  // type_demande
+            stmt.setInt(9, ticketModel.getId());  // ID du ticket à modifier
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected == 0) {
+                throw new RuntimeException("Ticket avec l'ID " + ticketModel.getId() + " introuvable.");
+            }
+
+        } catch (SQLException | ParseException e) {
+            throw new RuntimeException("Erreur lors de la modification du ticket avec l'ID " + ticketModel.getId(), e);
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException("Erreur lors de la fermeture des ressources", e);
+            }
+        }
+        return ticketModel;
+    }
+
 
     // Méthode générique pour charger le fichier JSON et le convertir en liste d'objets
     public <T> List<T> getTicketFromJsonFile(Class<T[]> cls, String filepath) {

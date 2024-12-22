@@ -42,6 +42,11 @@ public class TicketResource {
         this.ticketService.deleteTicket(id);
     }
 
+    @PUT
+    public TicketModel modifyTicket(TicketModel ticketModel) {
+        return this.ticketService.modifyTicket(ticketModel);
+    }
+
 
 }
 
