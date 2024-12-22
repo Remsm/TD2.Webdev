@@ -2,7 +2,7 @@ package fr.isen.ticketapp.implementations;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.isen.ticketapp.interfaces.models.PosteModel;
-import fr.isen.ticketapp.interfaces.models.TicketModel;
+import fr.isen.ticketapp.interfaces.models.enums.ETAT2;
 import fr.isen.ticketapp.interfaces.services.PosteService;
 import io.agroal.api.AgroalDataSource;
 import jakarta.enterprise.inject.spi.CDI;
@@ -21,6 +21,54 @@ public class PosteServiceImpl implements PosteService {
     @Override
     public List<PosteModel> getJSONPostes() {
         return getPosteFromJsonFile(PosteModel[].class, "poste_informatique.json");
+    }
+
+    @Override
+    public List<PosteModel> getPostes() {
+            List<PosteModel> postes = new ArrayList<>();
+            Connection conn = null;
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            try {
+                conn = dataSource.getConnection();
+                String sql = "SELECT * FROM Poste";
+                stmt = conn.prepareStatement(sql);
+                rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    PosteModel poste = new PosteModel();
+                    poste.setId(rs.getInt("id"));
+                    poste.setEtat2(ETAT2.valueOf(rs.getString("etat2")));
+                    poste.setConfiguration(rs.getString("configuration"));
+                    poste.setUtilisateur_affecte(rs.getString("utilisateur_affecte"));
+
+                    postes.add(poste);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException("Erreur lors de la récupération des postes", e);
+            } finally {
+                try {
+                    if (rs != null) rs.close();
+                    if (stmt != null) stmt.close();
+                    if (conn != null) conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException("Erreur lors de la fermeture des ressources", e);
+                }
+            }
+
+            return postes;
+        }
+
+    @Override
+    public PosteModel getPosteById(int id) {
+        List<PosteModel> postes = new ArrayList<>(this.getJSONPostes());
+        List<PosteModel> posteFromDB = new ArrayList<>(this.getPostes());
+        postes.addAll(posteFromDB);
+        return postes.stream()
+                .filter(poste -> poste.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
@@ -58,10 +106,6 @@ public class PosteServiceImpl implements PosteService {
 
     }
 
-    @Override
-    public void createPoste(PosteModel poste) {
-
-    }
 
     @Override
     public void updatePoste(int id, PosteModel poste) {

@@ -8,9 +8,11 @@ public interface PosteService {
 
     List<PosteModel> getJSONPostes();
 
-    PosteModel addPoste(final PosteModel posteModel);
+    List<PosteModel> getPostes();
 
-    void createPoste(final PosteModel poste);
+    PosteModel getPosteById(final int id);
+
+    PosteModel addPoste(final PosteModel posteModel);
 
     void updatePoste(final int id, final PosteModel poste);
 
