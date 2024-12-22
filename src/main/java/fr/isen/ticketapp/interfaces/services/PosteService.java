@@ -14,10 +14,10 @@ public interface PosteService {
 
     PosteModel addPoste(final PosteModel posteModel);
 
-    void updatePoste(final int id, final PosteModel poste);
+    PosteModel modifyPoste(final PosteModel posteModel);
 
     void deletePoste(final int id);
 
-    void getPoste();
+
 
 }

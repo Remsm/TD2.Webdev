@@ -3,15 +3,9 @@ package fr.isen.ticketapp.resources;
 import fr.isen.ticketapp.implementations.PosteServiceImpl;
 import fr.isen.ticketapp.interfaces.models.PosteModel;
 import fr.isen.ticketapp.interfaces.services.PosteService;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +37,17 @@ public class PosteResource {
     @POST
     public PosteModel addPoste(PosteModel posteModel) {
         return this.posteService.addPoste(posteModel);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void deletePoste(@jakarta.ws.rs.PathParam("id") int id) {
+        this.posteService.deletePoste(id);
+    }
+
+    @PUT
+    public PosteModel modifyPoste(PosteModel posteModel) {
+        return this.posteService.modifyPoste(posteModel);
     }
 }
 

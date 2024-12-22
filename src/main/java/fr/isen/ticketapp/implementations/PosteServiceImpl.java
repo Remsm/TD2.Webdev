@@ -106,21 +106,63 @@ public class PosteServiceImpl implements PosteService {
 
     }
 
-
     @Override
-    public void updatePoste(int id, PosteModel poste) {
+    public PosteModel modifyPoste(PosteModel posteModel) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
 
+        try {
+            conn = dataSource.getConnection();
+
+            String sql = "UPDATE Poste SET etat2 = ?, configuration = ?, utilisateur_affecte = ? WHERE id = ?";
+            stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, posteModel.getEtat2().toString());
+            stmt.setString(2, posteModel.getConfiguration());
+            stmt.setString(3, posteModel.getUtilisateur_affecte());
+            stmt.setInt(4, posteModel.getId());
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected == 0) {
+                throw new RuntimeException("Poste avec l'ID " + posteModel.getId() + " introuvable.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la modification du poste avec l'ID " + posteModel.getId(), e);
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException("Erreur lors de la fermeture des ressources", e);
+            }
+        }
+
+        return posteModel;
     }
 
     @Override
     public void deletePoste(int id) {
+        Connection conn = null;
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM Poste WHERE id = ?");
+            stmt.setInt(1, id);
 
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new RuntimeException("PosteInformatique avec l'ID " + id + " introuvable.");
+            }
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la suppression du PosteInformatique avec l'ID " + id, e);
+        }
     }
 
-    @Override
-    public void getPoste() {
-
-    }
 
     // Méthode générique pour charger le fichier JSON et le convertir en liste d'objets
     public <T> List<T> getPosteFromJsonFile(Class<T[]> cls, String filepath) {
