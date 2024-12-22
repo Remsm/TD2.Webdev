@@ -3,10 +3,7 @@ package fr.isen.ticketapp;
 import fr.isen.ticketapp.implementation.TicketServiceImpl;
 import fr.isen.ticketapp.interfaces.models.TicketModel;
 import fr.isen.ticketapp.interfaces.services.TicketService;
-import io.smallrye.mutiny.Uni;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
@@ -33,6 +30,19 @@ public class TicketResource {
     public TicketModel getTicketById(@jakarta.ws.rs.PathParam("id") int id) {
         return this.ticketService.getTicketById(id);
     }
+
+    @POST
+    public TicketModel addTicket(TicketModel ticketModel) {
+        return this.ticketService.addTicket(ticketModel);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void deleteTicket(@jakarta.ws.rs.PathParam("id") int id) {
+        this.ticketService.deleteTicket(id);
+    }
+
+
 }
 
 
