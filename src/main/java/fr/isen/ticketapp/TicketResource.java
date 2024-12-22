@@ -6,6 +6,7 @@ import fr.isen.ticketapp.interfaces.services.TicketService;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/ticket")
@@ -20,7 +21,9 @@ public class TicketResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<TicketModel> getAllTickets() {
-        List<TicketModel> tickets = this.ticketService.getTickets();
+        List<TicketModel> tickets = new ArrayList<>(this.ticketService.getJSONTickets());
+        List<TicketModel> ticketsFromDB = new ArrayList<>(this.ticketService.getTickets());
+        tickets.addAll(ticketsFromDB);
         return tickets;
     }
 

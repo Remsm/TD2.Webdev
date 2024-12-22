@@ -2,6 +2,8 @@ package fr.isen.ticketapp.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.isen.ticketapp.interfaces.models.TicketModel;
+import fr.isen.ticketapp.interfaces.models.enums.ETAT;
+import fr.isen.ticketapp.interfaces.models.enums.IMPACT;
 import fr.isen.ticketapp.interfaces.services.TicketService;
 import io.agroal.api.AgroalDataSource;
 import jakarta.enterprise.inject.spi.CDI;
@@ -20,13 +22,59 @@ public class TicketServiceImpl implements TicketService {
     AgroalDataSource dataSource = CDI.current().select(AgroalDataSource.class).get();
 
     @Override
-    public List<TicketModel> getTickets() {
+    public List<TicketModel> getJSONTickets() {
         return getTicketFromJsonFile(TicketModel[].class, "ticket.json");
     }
 
     @Override
+    public List<TicketModel> getTickets() {
+        List<TicketModel> tickets = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = dataSource.getConnection();
+            String sql = "SELECT * FROM ticket";
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                TicketModel ticket = new TicketModel();
+                ticket.setId(rs.getInt("id"));
+                ticket.setTitre(rs.getString("titre"));
+                ticket.setDescription(rs.getString("description"));
+                ticket.setImpact(IMPACT.valueOf(rs.getString("impact")));
+                ticket.setDate_creation(rs.getTimestamp("date_creation"));
+                ticket.setDate_modification(rs.getString("date_modification"));
+                ticket.setEtat(ETAT.valueOf(rs.getString("etat")));
+                ticket.setUtilisateur_createur(rs.getString("utilisateur_createur"));
+                ticket.setPoste_informatique(rs.getInt("poste_informatique"));
+                ticket.setType_demande(rs.getString("type_demande"));
+
+                tickets.add(ticket);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la récupération des tickets", e);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException("Erreur lors de la fermeture des ressources", e);
+            }
+        }
+
+        return tickets;
+    }
+
+
+    @Override
     public TicketModel getTicketById(int id) {
-        List<TicketModel> tickets = getTickets();
+        List<TicketModel> tickets = new ArrayList<>(this.getJSONTickets());
+        List<TicketModel> ticketsFromDB = new ArrayList<>(this.getTickets());
+        tickets.addAll(ticketsFromDB);
         return tickets.stream()
                 .filter(ticket -> ticket.getId() == id)
                 .findFirst()
