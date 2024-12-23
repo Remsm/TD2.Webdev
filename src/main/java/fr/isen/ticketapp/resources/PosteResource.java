@@ -21,6 +21,7 @@ public class PosteResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<PosteModel> getAllPostes() {
+        System.out.println("GET /poste: Récupération de tous les postes");
         List<PosteModel> postes = new ArrayList<>(this.posteService.getJSONPostes());
         List<PosteModel> postesFromDB = new ArrayList<>(this.posteService.getPostes());
         postes.addAll(postesFromDB);
@@ -31,22 +32,26 @@ public class PosteResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public PosteModel getPosteById(@jakarta.ws.rs.PathParam("id") int id) {
+        System.out.println("GET /poste/" + id + ": Récupération du poste avec ID " + id);
         return this.posteService.getPosteById(id);
     }
 
     @POST
     public PosteModel addPoste(PosteModel posteModel) {
+        System.out.println("POST /poste: Ajout d'un nouveau poste");
         return this.posteService.addPoste(posteModel);
     }
 
     @DELETE
     @Path("/{id}")
     public void deletePoste(@jakarta.ws.rs.PathParam("id") int id) {
+        System.out.println("DELETE /poste/" + id + ": Suppression du poste avec ID " + id);
         this.posteService.deletePoste(id);
     }
 
     @PUT
     public PosteModel modifyPoste(PosteModel posteModel) {
+        System.out.println("PUT /poste: Modification d'un poste");
         return this.posteService.modifyPoste(posteModel);
     }
 }

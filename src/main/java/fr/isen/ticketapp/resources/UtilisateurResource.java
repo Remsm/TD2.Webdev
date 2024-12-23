@@ -21,6 +21,7 @@ public class UtilisateurResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<UtilisateurModel> getAllTickets() {
+        System.out.println("GET /utilisateur: Récupération de tous les utilisateurs");
         List<UtilisateurModel> utilisateurs = new ArrayList<>(this.utilisateurService.getJSONUtilisateurs());
         List<UtilisateurModel> utilisateursFromDB = new ArrayList<>(this.utilisateurService.getUtilisateurs());
         utilisateurs.addAll(utilisateursFromDB);
@@ -31,22 +32,26 @@ public class UtilisateurResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public UtilisateurModel getUtilisateurtById(@jakarta.ws.rs.PathParam("id") int id) {
+        System.out.println("GET /utilisateur/" + id + ": Récupération de l'utilisateur avec ID " + id);
         return this.utilisateurService.getUtilisateurtById(id);
     }
 
     @POST
     public UtilisateurModel addUtilisateur(UtilisateurModel utilisateurModel) {
+        System.out.println("POST /utilisateur: Ajout d'un nouvel utilisateur");
         return this.utilisateurService.addUtilisateur(utilisateurModel);
     }
 
     @DELETE
     @Path("/{id}")
     public void deleteUtilisateur(@jakarta.ws.rs.PathParam("id") int id) {
+        System.out.println("DELETE /utilisateur/" + id + ": Suppression de l'utilisateur avec ID " + id);
         this.utilisateurService.deleteUtilisateur(id);
     }
 
     @PUT
     public UtilisateurModel modifyUtilisateur(UtilisateurModel utilisateurModel) {
+        System.out.println("PUT /utilisateur: Modification d'un utilisateur");
         return this.utilisateurService.modifyUtilisateur(utilisateurModel);
     }
 }
