@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "89b2945d-e93a-4410-936b-8f02039bff7b",
+		"name": "TD2_Webdev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40538157"
+	},
+	"item": [
+		{
+			"name": "Ticket",
+			"item": [
+				{
+					"name": "GET ticket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serveur_url}}/ticket",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"ticket"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ticket id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serveur_url}}/ticket/6",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"ticket",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST ticket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"titre\": \"Problème ordinateur\",\r\n      \"description\": \"L'écran ne marche plus\",\r\n      \"date_creation\": \"18/06/2024 18:00:00\",\r\n      \"date_modification\": \"20/06/2024 09:00:00\",\r\n      \"impact\": \"MAJEUR\",\r\n      \"etat\": \"EN_COURS\",\r\n      \"utilisateur_createur\": \"U126\",\r\n      \"poste_informatique\": 6,\r\n      \"type_demande\": \"Problème technique\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serveur_url}}/ticket",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"ticket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT ticket",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{     \"id\":6,\r\n      \"titre\": \"Problème ordinateur\",\r\n      \"description\": \"L'écran ne marche plus\",\r\n      \"date_creation\": \"18/06/2024 18:00:00\",\r\n      \"date_modification\": \"20/06/2024 09:00:00\",\r\n      \"impact\": \"MAJEUR\",\r\n      \"etat\": \"RESOLU\",\r\n      \"utilisateur_createur\": \"U126\",\r\n      \"poste_informatique\": 6,\r\n      \"type_demande\": \"Problème technique\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serveur_url}}/ticket",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"ticket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ticket",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serveur_url}}/ticket/6",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"ticket",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Poste",
+			"item": [
+				{
+					"name": "GET Poste",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serveur_url}}/poste",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"poste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Poste id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{serveur_url}}/poste/6",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"poste",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Poste",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"etat2\": \"en_fonction\",\r\n    \"configuration\": \"Processeur: Intel i9, RAM: 32GB, Stockage: 2TO SSD\",\r\n    \"utilisateur_affecte\": \"U123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serveur_url}}/poste",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"poste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Poste",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"id\":\"6\",   \r\n    \"etat2\": \"en_fonction\",\r\n    \"configuration\": \"Processeur: Intel i9, RAM: 32GB, Stockage: 2TO SSD\",\r\n    \"utilisateur_affecte\": \"U123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serveur_url}}/poste",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"poste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Poste",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{serveur_url}}/poste/6",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"poste",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Utilisateur",
+			"item": [
+				{
+					"name": "GET Utilisateur",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serveur_url}}/utilisateur",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"utilisateur"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "j",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Utilisateur id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serveur_url}}/utilisateur/6",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"utilisateur",
+								"6"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Utilisateur",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nom\": \"Bruce Willicsuuuu\",\r\n      \"email\": \"bruce.wiiilsuuuoooo@example.com\",\r\n      \"mot_de_passe\": \"igzi85dz5sdszd75fzf45z4z5f4zsdz5f78dz2\",\r\n      \"derniere_connexion\": \"24/12/2024 10:50:30\",\r\n      \"statut\":\"actif\",\r\n      \"role\": \"utilisateur\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serveur_url}}/utilisateur",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"utilisateur"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Utilisateur",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"6\",\r\n    \"nom\": \"Bruce Willis\",\r\n    \"email\": \"bruce.wilogoat@example.com\",\r\n    \"mot_de_passe\": \"igzi85dz5sdszd75fzf45z4z5f4zsdz5f78dz2\",\r\n    \"derniere_connexion\": \"24/12/2024 10:50:30\",\r\n    \"statut\": \"inactif\",\r\n    \"role\": \"utilisateur\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serveur_url}}/utilisateur",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"utilisateur"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Utilisateur",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{serveur_url}}/utilisateur/6",
+							"host": [
+								"{{serveur_url}}"
+							],
+							"path": [
+								"utilisateur",
+								"6"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
