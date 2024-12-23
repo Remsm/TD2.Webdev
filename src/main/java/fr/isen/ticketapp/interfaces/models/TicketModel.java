@@ -26,7 +26,7 @@ public class TicketModel {
     private Date date_creation;
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")  // Format de date pour le champ date_modification
-    @JsonProperty("date_modifiication")  // Notez la faute d'orthographe "date_modifiication" dans le JSON
+    @JsonProperty("date_modification")  // Notez la faute d'orthographe "date_modifiication" dans le JSON
     private String date_modification;
 
     @JsonProperty("etat")  // Mappe le champ JSON "etat"
